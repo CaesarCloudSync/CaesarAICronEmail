@@ -1,4 +1,5 @@
 import os
+import base64
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
@@ -27,7 +28,7 @@ JSONArray = List[Any]
 JSONStructure = Union[JSONArray, JSONObject]
 time_hour = (60 * 60) * 3 # 1 hour, * 3 hours
 
-qstash_access_token = os.environ.get("QSTASH_ACCESS_TOKEN")
+qstash_access_token = base64.b64decode(os.environ.get("QSTASH_ACCESS_TOKEN").encode()).decode()
 rev_newtork_account_pass = os.environ.get("REVISIONBANK_NETWORK_PASSWORD")
 
 @app.get('/')# GET # allow all origins all methods.

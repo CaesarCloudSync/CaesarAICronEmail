@@ -1,4 +1,5 @@
 import os
+import base64
 import smtplib, ssl
 from dotenv import load_dotenv
 from email import encoders
@@ -23,7 +24,7 @@ class CaesarAIEmail:
         message["Subject"] = subject
         message["From"] = sender_email
         message["To"] = email
-        password = os.environ.get("EMAIL_API_KEY")
+        password = base64.b64decode(os.environ.get("EMAIL_API_KEY").encode()).decode()
 
 
         # Turn these into plain/html MIMEText objects
