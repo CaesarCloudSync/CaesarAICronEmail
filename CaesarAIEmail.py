@@ -19,7 +19,7 @@ class CaesarAIEmail:
         except KeyError as kex:
             attachment = None
         #print(email,subject,message)
-        sender_email = "amari.lawal05@gmail.com"
+        sender_email = "revisionbankedu@gmail.com"
         message = MIMEMultipart("alternative")
         message["Subject"] = subject
         message["From"] = sender_email
