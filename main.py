@@ -49,6 +49,16 @@ async def sendemail(data : JSONStructure = None):
         return {"message":"email has been sent."}
     except Exception as ex:
         return {"error":f"{type(ex)}-{ex}"}
+    
+@app.post("/sendemailkartra") # POST # allow all origins all methods.
+async def sendemailkartra(email:str,message:str,subject:str,data : JSONStructure = None):  
+    try:
+        #data = dict(data)#request.get_json()
+        attachment = None
+        CaesarAIEmail.send(**{"email":email,"message":message,"subject":subject,"attachment":attachment})
+        return {"message":"email has been sent."}
+    except Exception as ex:
+        return {"error":f"{type(ex)}-{ex}"}
 @app.get("/schedule_network_reminder") # POST # allow all origins all methods.
 async def schedule_network_reminder():  
     try:
